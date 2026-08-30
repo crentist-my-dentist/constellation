@@ -34,6 +34,25 @@ narrower and still worth having.
   only**. No remote, ever. Never written to `inbox.md` or iCloud.
 - **`inbox.md`:** lives in iCloud for phone capture, so **facts only** go there.
 
+## How the boundary is actually enforced
+
+Three settings do the real work here. If they're wrong, everything above is just
+intention:
+
+1. **The connector's allowed directory.** The Filesystem connector is scoped to your
+   `constellation` folder and nothing else, so Claude can't read the rest of your Mac.
+2. **"Copy file to Claude" is denied.** That tool copies a file *out* of your folder
+   into Claude's own storage. Claude reading a candid file sends its text to Anthropic
+   for that one request (see above) — copying it leaves a durable copy on their side.
+   Those are different exposures, and only the second one is avoidable. So it's denied.
+3. **Claude's built-in memory is turned off.** Claude Desktop can generate its own
+   memories from your chats, including a setting specifically for sensitive topics.
+   Left on, honest reflection you meant for `candid/` lands in a permanent cloud store
+   instead of a local file — and you won't be told. Both toggles go off in setup.
+
+These are set once during setup ([SETUP.md](../SETUP.md) steps 4 and 5) and are worth
+re-checking after a Claude Desktop update, since defaults can come back.
+
 ## If even transient processing is too much
 
 If a piece of content is so sensitive that you don't want Anthropic to process it

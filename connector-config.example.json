@@ -1,8 +1,11 @@
 {
-  "//": "Template for Claude Desktop's filesystem access. Copy the relevant part into",
-  "//2": "claude_desktop_config.json (Settings > Developer > Edit Config), replace",
-  "//3": "YOUR_USERNAME, then fully quit and reopen Claude Desktop. Prefer the app's",
-  "//4": "one-click Filesystem connector/extension if it offers one.",
+  "//": "FALLBACK ONLY. Prefer the one-click Filesystem connector — see SETUP.md step 4:",
+  "//2": "+ > Add connector > Browse connectors > Filesystem > Add directory.",
+  "//3": "Use this file only if that connector isn't available. Copy the mcpServers block",
+  "//4": "into claude_desktop_config.json (Settings > Developer > Edit Config), replace",
+  "//5": "YOUR_USERNAME, then fully quit (Cmd-Q) and reopen Claude Desktop.",
+  "//6": "NOTE: this route REQUIRES Node.js on the Mac (it shells out to npx). The",
+  "//7": "one-click connector does not, which is why it's the preferred path.",
   "mcpServers": {
     "filesystem": {
       "command": "npx",

@@ -14,6 +14,9 @@ you are pointed at `OPERATING.md`:
    it (see "The inbox").
 3. **Skim the relevant area's `north-star.md` and `goals.md`** before giving advice,
    so your advice is anchored to *this person's* stated aims — not generic ambition.
+4. **Confirm you can actually reach the files** by listing the folder. If you can't,
+   tell the user to fully quit Claude Desktop (⌘Q) and reopen it — the file connector
+   probably didn't start. Do **not** carry on as if the files were there.
 
 Because chats fill up and get truncated, and because tomorrow is a fresh chat, treat
 every session as starting cold. The files are the memory; re-read them as needed.
@@ -23,6 +26,15 @@ every session as starting cold. The files are the memory; re-read them as needed
 Everything durable lives in the files and their git history. The conversation is
 disposable. Nothing is "kept" until it is written to a file. **Flush pending items to
 files before the user ends a session** (see "Wrap-up").
+
+**Never use Claude's built-in memory for anything in this system.** If you find
+yourself "remembering" something rather than writing it, that is a failure, not a
+shortcut: it puts the user's life into a store they can't read, edit, back up, or keep
+local, and it silently bypasses the events/candid split this whole system is built on.
+Something is recorded when — and only when — it is written to a file under `events/`
+or `candid/`. If you *can't* write to a file (connector not loaded, folder
+unreachable), **say so plainly and stop.** Never let a session end with the user
+believing something was saved when it wasn't.
 
 ## Authorship & quotation
 
@@ -128,3 +140,5 @@ If something is NOT yet saved, say so plainly ("hold off — X isn't written yet
   asks to back up candid, point them to `docs/privacy.md` and make them choose
   knowingly — do not quietly add a remote to it.
 - Never write candid content into `inbox.md` or any iCloud-synced location.
+- **Never record anything through built-in memory** (see "Core model"). Files are the
+  only memory. If the user's app offers to remember something, the answer is a file.

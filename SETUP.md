@@ -14,7 +14,7 @@ free Claude account, and the free **Claude Desktop** app.
 
 Keep this folder in a plain local location like `~/constellation`. **Do not put it
 in iCloud Drive** — iCloud syncing a live git repo can corrupt it and make duplicate
-"file 2.md" copies. (The one iCloud file we *do* use is the inbox, in step 5.)
+"file 2.md" copies. (The one iCloud file we *do* use is the inbox, in step 6.)
 
 ## 2. Create your two data folders from the templates
 
@@ -25,7 +25,7 @@ which are ignored by the framework's own git so they stay yours.
 cd ~/constellation
 cp -R templates/events  events
 cp -R templates/candid  candid
-cp    templates/inbox.md inbox.md   # (temporary; real inbox goes in iCloud, step 5)
+cp    templates/inbox.md inbox.md   # (temporary; real inbox goes in iCloud, step 6)
 ```
 
 ## 3. Turn events/ and candid/ into their own git repos
@@ -35,34 +35,79 @@ cd ~/constellation/events && git init && git add -A && git commit -m "start even
 cd ~/constellation/candid && git init && git add -A && git commit -m "start candid"
 ```
 
-- **events** may later get a *private* remote for backup (optional, step 6).
+- **events** may later get a *private* remote for backup (optional, step 7).
 - **candid** must **never** get a remote. It stays on this machine. This is the
   privacy guarantee — read [docs/privacy.md](docs/privacy.md) before changing it.
 
-## 4. Install Claude Desktop and give it access to this folder
+## 4. Install Claude Desktop and connect it to your folder
 
-1. Install the **Claude Desktop** app and sign in (the free plan is fine).
-2. Give Claude read/write access to `~/constellation`:
-   - If your app offers one-click **Desktop Extensions / connectors**, add the
-     **Filesystem** connector and point it at `~/constellation`.
-   - Otherwise, edit `claude_desktop_config.json` using
-     [connector-config.example.json](connector-config.example.json) as a template
-     (replace `YOUR_USERNAME`), then restart the app.
-3. In a new chat, confirm it works: *"List the files in my constellation folder."*
+1. Install the **Claude Desktop** app and sign in. **The free plan is fine** —
+   everything in this guide works on it. (Claude Code's "Select folder…" and Cowork
+   are paid features. You don't need either one.)
+2. In a chat, click the **+** in the message box → **Add connector** → **Browse
+   connectors**.
+3. Search for **Filesystem** and open it.
+4. Under **Allowed Directories**, click **Add directory** and pick your
+   `~/constellation` folder. Choose *only* that folder — this is the privacy
+   boundary. Claude cannot see anything outside it.
+5. Set the tool permissions using the table below.
+6. Click **Save**.
+7. **Fully quit Claude Desktop (⌘Q) and reopen it.** The connector doesn't start
+   until the app restarts. Skipping this is the most common setup failure, and the
+   symptom is confusing — see "Check it worked" below.
 
-## 5. Set up the iCloud capture inbox
+### Tool permissions
+
+Each tool can be set to allow (✓), ask every time (✋), or deny (⃠).
+
+| Tools | Set to | Why |
+|---|---|---|
+| All read-only tools | **Allow** | Claude reads your inbox, journal, goals and north stars every session. Approval prompts here make the system exhausting to use. |
+| Write File, Edit File, Create Directory | **Allow** | This is the core loop — filing what you said. Mistakes are recoverable, because `events/` and `candid/` are git repos. |
+| Move File | **Needs approval** | The one tool that can move a file out from under the system. It's rarely needed, so a prompt costs nothing. |
+| **Copy file to Claude** | **Deny** | It copies files out of your folder into Claude's own storage — a permanent copy outside the boundary. See [docs/privacy.md](docs/privacy.md). |
+
+**Check it worked.** In a new chat, ask:
+
+> *Using the Filesystem tools, list the files in my constellation folder.*
+
+You should get a real listing (`OPERATING.md`, `events`, `candid`, …). If Claude says
+it can't find the folder, or offers to let you *upload* it, then it's talking to its
+own sandbox rather than your Mac — **quit the app with ⌘Q, reopen it, and ask again.**
+
+> **Fallback:** if the connector directory doesn't offer Filesystem, you can configure
+> it by hand — see [connector-config.example.json](connector-config.example.json).
+> That route requires Node.js on the Mac; the one-click connector does not.
+
+## 5. Turn off Claude's built-in memory
+
+**Don't skip this one.** Claude Desktop has its own memory feature and it is **on by
+default**. Left on, Claude will "remember" what you tell it *instead of writing it to
+your files* — you'll see "Created 2 memories" and nothing will land on disk. Your
+journal stays empty while everything looks like it's working.
+
+Go to **Settings → Memory** and switch **off**:
+
+- **Generate memory from chats**
+- **Include sensitive topics in memory** — its own description covers health
+  conditions and religious beliefs, which is exactly what `candid/` exists for.
+
+This is a per-account setting, so it has to be done on every account that uses the
+system.
+
+## 6. Set up the iCloud capture inbox
 
 This is the only thing that lives in iCloud, so you can capture from your phone.
 
 1. Create a plain text note or file called `inbox.md` in **iCloud Drive** (Files app
    works on both Mac and iPhone). Apple Notes works too if you prefer.
 2. On the Mac, either move `~/constellation/inbox.md` into iCloud and replace it with
-   a link, or just tell Claude in step 7 where the iCloud inbox lives so it reads
+   a link, or just tell Claude in step 8 where the iCloud inbox lives so it reads
    from there.
 3. On the iPhone, add that file/note to your Home Screen or Share sheet for one-tap
    capture. **Only put facts-in-the-moment here — nothing you'd want to keep private.**
 
-## 6. (Optional) Back up events to a private repo
+## 7. (Optional) Back up events to a private repo
 
 Only `events/`, and only if you want off-machine backup:
 
@@ -74,7 +119,7 @@ git push -u origin main
 
 Do **not** do this for `candid/`.
 
-## 7. Start every session with the boot prompt
+## 8. Start every session with the boot prompt
 
 The Desktop app does not auto-load the rules. Begin each chat by pasting:
 
@@ -83,6 +128,9 @@ The Desktop app does not auto-load the rules. Begin each chat by pasting:
 
 If your app has **Projects**, put that line in the project's custom instructions so
 it happens automatically. (If it doesn't, the paste works every time.)
+
+Without this, Claude has no idea the rules exist and will just chat with you — which
+is the second way to end up with an empty journal.
 
 ---
 

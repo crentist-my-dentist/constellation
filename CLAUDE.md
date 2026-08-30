@@ -22,9 +22,18 @@ here — see the two-track model below.
 
 ## Architecture (the load-bearing decisions)
 
-- **Runtime = free Claude Desktop app + a local filesystem MCP connector.** Not Claude
-  Code (that needs a paid plan). Desktop does **not** auto-load rules, so each session
-  starts with a **boot prompt** that tells Claude to read `OPERATING.md`.
+- **Runtime = free Claude Desktop app + a local filesystem MCP connector.** Verified
+  working on a real free account (2026-08-30): `+ > Add connector > Browse connectors
+  > Filesystem`, scoped to one directory. Claude Code's `Select folder…` and Cowork
+  are both **paid-only** — do not rewrite `SETUP.md` around either, however much nicer
+  they look. Desktop does **not** auto-load rules, so each session starts with a **boot
+  prompt** that tells Claude to read `OPERATING.md`.
+- **Built-in memory is the framework's natural enemy.** Claude Desktop generates its
+  own memories from chats, on by default. Left on, Claude "remembers" instead of
+  writing files — it reports "Created 2 memories" and nothing hits disk, so the user's
+  journal stays empty while everything looks fine. Defended twice: a SETUP step that
+  turns both toggles off, and a rule in `OPERATING.md`. Re-check this after Desktop
+  releases; a default flipping back would silently break every install.
 - **Phone = capture only.** iOS can't run the local connector, so the phone writes to
   `inbox.md` (in iCloud); the Mac session ingests + clears it. Mirrors a hot→cold
   capture model.
@@ -95,12 +104,22 @@ backward-compatible, or ship migration notes with them.
 
 ## Notes / open threads
 
-- Live setup test on a real Mac — **git half done**: a full rehearsal (clone → copy
+- ~~Live setup test — git half~~ (2026-08-30): a full rehearsal (clone → copy
   templates → `git init` both data repos → write data → pull an upstream update)
   confirmed nothing leaks into the framework repo and updates land without touching
-  adopter data. **Still untested: the filesystem connector, the iCloud inbox
-  round-trip, and whether `OPERATING.md`'s routing table actually splits events from
-  candid in a real session.**
+  adopter data.
+- ~~Live setup test — connector half~~ (2026-08-30): Filesystem connector installs and
+  reads/writes on a **free** account. Two gotchas found and documented: it doesn't
+  start until the app is fully quit (⌘Q) and reopened — and the failure mode is Claude
+  silently answering from its server-side sandbox, offering to let you "upload" the
+  folder — and built-in memory hijacks the write path (see above).
+- **Still untested:** whether `OPERATING.md`'s routing table actually splits events
+  from candid in a real session (first attempt was inconclusive — built-in memory
+  intercepted it before any file was written), and the iCloud inbox round-trip.
+- **Open question — Node.js.** The one-click connector appears to bundle its own
+  runtime, but this was only tested on a machine that already had Node v26. Whether it
+  works on a Node-less Mac is unverified, and that's every relative's Mac. Confirm on a
+  clean machine before onboarding anyone.
 - ~~Publish decision~~ — settled 2026-08-30: private repo on Michael's personal
   GitHub account, adopters added as Read collaborators. GitHub Free covers this for
   everyone (unlimited private repos + collaborators); a free org with teams is the

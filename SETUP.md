@@ -10,7 +10,12 @@ free Claude account, and the free **Claude Desktop** app.
 
 ---
 
-## 1. Put the framework somewhere permanent (NOT in iCloud)
+## 1. Get the framework and put it somewhere permanent (NOT in iCloud)
+
+Download it from <https://github.com/crentist-my-dentist/constellation> — the green
+**Code** button → **Download ZIP** → unzip → rename `constellation-main` to
+`constellation`. No GitHub account needed. (If you already use git, `git clone` the
+same URL instead; then future updates are one `git pull`.)
 
 Keep this folder in a plain local location like `~/constellation`. **Do not put it
 in iCloud Drive** — iCloud syncing a live git repo can corrupt it and make duplicate

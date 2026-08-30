@@ -23,6 +23,9 @@ life by.
 
 ## Start here
 
+Get the files: **Code → Download ZIP** at the top of this page, unzip, and rename the
+folder to `constellation`. (Or `git clone` it, if that means something to you.)
+
 1. Read **[SETUP.md](SETUP.md)** — one-time setup (Claude Desktop, file access,
    the iCloud inbox, git). ~20 minutes with a helper.
    *Rather be walked through it?* Open a new Claude chat, attach

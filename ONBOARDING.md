@@ -32,23 +32,33 @@ no access to their files at all. That's expected — creating that access is the
 Work from `SETUP.md` in the folder they were given — it is the source of truth, and
 this file is the coaching layer over it. In order:
 
-1. **Put the framework folder somewhere permanent**, e.g. `~/constellation`. **Not in
-   iCloud Drive** — iCloud corrupts live git repos and makes "file 2.md" duplicates.
-2. **Create their two data folders** from `templates/` (`events/`, `candid/`, and
-   `inbox.md`).
-3. **Turn `events/` and `candid/` into git repos.** Tell them plainly that they will
+1. **Get the framework onto their Mac.** It lives at
+   <https://github.com/crentist-my-dentist/constellation>. Prefer the first option —
+   it needs no GitHub account and no git:
+   - **Download ZIP**: green **Code** button → **Download ZIP** → double-click to
+     unzip → rename the unzipped `constellation-main` folder to `constellation`.
+   - **Clone** (only if they already have git):
+     `git clone https://github.com/crentist-my-dentist/constellation.git` — worth it if
+     they're comfortable, because later updates become one `git pull`. With the ZIP,
+     updating means downloading again.
+2. **Put that folder somewhere permanent** — their home folder, so the path is
+   `~/constellation`. **Not in iCloud Drive**: iCloud corrupts live git repos and makes
+   duplicate "file 2.md" copies.
+3. **Create their two data folders** from `templates/` (`events/`, `candid/`,
+   `inbox.md`, and `feedback.md`).
+4. **Turn `events/` and `candid/` into git repos.** Tell them plainly that they will
    not touch git again — it's there only so a snapshot is possible later.
-4. **Install Claude Desktop, sign in** (free plan is fine), **and add the Filesystem
+5. **Install Claude Desktop, sign in** (free plan is fine), **and add the Filesystem
    connector**: `+` → **Add connector** → **Browse connectors** → search **Filesystem**
    → **Add directory** → choose *only* their `constellation` folder. Then set tool
    permissions per the table in `SETUP.md` — reads Allow, Write/Edit/Create Directory
    Allow, Move File ask, **Copy file to Claude Deny**. Then **Save**.
-5. **Have them fully quit Claude Desktop (⌘Q) and reopen it.** Not close the window —
+6. **Have them fully quit Claude Desktop (⌘Q) and reopen it.** Not close the window —
    quit. The connector does not start until the app restarts.
-6. **Turn off built-in memory**: Settings → Memory → switch off *Generate memory from
+7. **Turn off built-in memory**: Settings → Memory → switch off *Generate memory from
    chats* **and** *Include sensitive topics in memory*.
-7. **Set up the iCloud inbox** for phone capture.
-8. **Create a Project** called Constellation with the boot prompt as its custom
+8. **Set up the iCloud inbox** for phone capture.
+9. **Create a Project** called Constellation with the boot prompt as its custom
    instructions, so the rules load automatically every session.
 
 ## Known failure modes — check these before theorising

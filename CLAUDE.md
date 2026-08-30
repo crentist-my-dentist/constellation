@@ -113,9 +113,21 @@ backward-compatible, or ship migration notes with them.
   start until the app is fully quit (⌘Q) and reopened — and the failure mode is Claude
   silently answering from its server-side sandbox, offering to let you "upload" the
   folder — and built-in memory hijacks the write path (see above).
-- **Still untested:** whether `OPERATING.md`'s routing table actually splits events
-  from candid in a real session (first attempt was inconclusive — built-in memory
-  intercepted it before any file was written), and the iCloud inbox round-trip.
+- ~~Routing table~~ verified end-to-end 2026-08-30 against a real session: a run went
+  to `events/journal/`, a read on a manager to `candid/people/_map.md`, and the user's
+  own take to `candid/reflections/` — right tracks, dated, paraphrased not fabricated.
+  The advice loop held its quality bar unprompted (options with costs, a real
+  recommendation, no cheerleading).
+- **DECISION NEEDED — how do commits happen?** Found 2026-08-30: **Claude cannot run
+  git.** The Filesystem connector is read/write/edit only, no shell, and its bash tool
+  runs in Anthropic's sandbox, not on the Mac. `OPERATING.md`'s commit protocol was
+  therefore fiction; it now tells Claude it can't commit and must not offer terminal
+  commands. But that leaves nothing advancing history for an adopter. Options: (a) drop
+  git from the adopter experience entirely — files only; (b) a launchd agent that
+  auto-commits both repos on a timer (never pushes `candid/`) — the only option that
+  asks nothing of a non-technical user; (c) a double-clickable `commit.command`. (b) is
+  the recommendation. Until this is decided, adopters get files but no history.
+- **Still untested:** the iCloud inbox round-trip.
 - **Open question — Node.js.** The one-click connector appears to bundle its own
   runtime, but this was only tested on a machine that already had Node v26. Whether it
   works on a Node-less Mac is unverified, and that's every relative's Mac. Confirm on a

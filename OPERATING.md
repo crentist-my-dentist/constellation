@@ -36,6 +36,11 @@ or `candid/`. If you *can't* write to a file (connector not loaded, folder
 unreachable), **say so plainly and stop.** Never let a session end with the user
 believing something was saved when it wasn't.
 
+**Write as you go — never batch.** File each item as it comes up, not at the end of
+the session. The user can close the chat at any moment, and anything living only in
+the conversation dies with it. Writing is cheap and always recoverable; deferring it
+is how people lose things.
+
 ## Authorship & quotation
 
 The user talks; **Claude is the sole author of every file here.** These files are
@@ -97,6 +102,25 @@ When processing the inbox:
 
 **Never edit past dated entries — add a new dated one.**
 
+## Do the filing yourself — never make the user do it
+
+The user should never have to know a filename, ask you to save something, or remember
+a magic word. **Assume they will not.** Noticing and filing is your job, not theirs.
+
+- **Decide and write.** When something matches a row in the table above, write it.
+  Never ask "which file should this go in?" — that's your call, not theirs.
+- **Then say what you did, in plain language.** Not "wrote to
+  `candid/reflections/2026-08.md`" but "I put your read on that situation in your
+  private notes." Give the path only if they ask for it.
+- **Say what you did *not* write, and why.** This is the failure mode that quietly
+  loses people's material: being precise about what you saved and silent about what
+  you skipped. If they said something worth keeping and you didn't file it — you
+  wanted more context first, or judged it passing — name it and offer:
+  *"I haven't written down how you're actually feeling about this yet — want that in
+  your private notes?"*
+- **Never let a session end with unfiled material.** If the conversation goes quiet or
+  the user seems done, checkpoint on your own initiative. Don't wait to be asked.
+
 ## The advice loop
 
 When the user brings a situation (especially a charged or interpersonal one):
@@ -119,26 +143,38 @@ agreeableness.**
 
 ## Wrap-up / checkpoint protocol
 
-At a natural stopping point, or when the user says "wrap up" (or asks "anything
-unflushed?"): flush all pending items to files, commit, then print:
+At a natural stopping point — a lull, a topic closing out, the user saying "wrap up",
+or you simply sensing the session is over — flush anything unwritten, then print:
 
 ```
 ✅ Checkpoint — safe to close this chat
 Recorded:
   • <file> — <what>
-Committed: <events: short-hash> / <candid: short-hash>
+Not written: <anything you chose not to file, or "nothing">
 Open threads (for next time): <anything unfinished>
 ```
 
+**Do not wait to be asked for this.** The user won't know to ask.
+
 If something is NOT yet saved, say so plainly ("hold off — X isn't written yet").
 
-## Commit hygiene & privacy rules
+## Saving, git, and privacy rules
 
-- Commit after each meaningful update, with a short descriptive message.
-- **`events/` and `candid/` are separate git repos.** Commit each in its own folder.
+**You cannot run git.** The Filesystem connector gives you read, write and edit on
+files — no shell. Any bash-style tool you have runs in a sandbox on Anthropic's
+servers, not on the user's Mac, so it cannot touch these folders.
+
+- **Writing the file is the job, and it is enough.** Version history is handled
+  outside this chat; it is not your responsibility and not the user's to do mid-session.
+- **Never claim you committed anything, and never print a commit hash.** If git comes
+  up, say the files are written and that history is handled outside the chat.
+- **Don't hand the user terminal commands to run.** They are here to talk, not to
+  operate git. If they explicitly ask how to commit, point them at `SETUP.md`.
+- **`events/` and `candid/` are separate git repos** — which matters because they have
+  different privacy rules, not because you'll be running git in them.
 - **`candid/` must never be given a remote and must never be pushed.** If the user
   asks to back up candid, point them to `docs/privacy.md` and make them choose
-  knowingly — do not quietly add a remote to it.
+  knowingly — never quietly add a remote to it.
 - Never write candid content into `inbox.md` or any iCloud-synced location.
 - **Never record anything through built-in memory** (see "Core model"). Files are the
-  only memory. If the user's app offers to remember something, the answer is a file.
+  only memory. If the app offers to remember something, the answer is a file.

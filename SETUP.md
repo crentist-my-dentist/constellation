@@ -119,18 +119,26 @@ git push -u origin main
 
 Do **not** do this for `candid/`.
 
-## 8. Start every session with the boot prompt
+## 8. Set up a Project so the rules load themselves
 
-The Desktop app does not auto-load the rules. Begin each chat by pasting:
+The Desktop app does not auto-load the rules — every new chat starts blank. The boot
+prompt is this, **with your real path filled in**:
 
-> **Read OPERATING.md in my constellation folder and follow it. Check the inbox,
-> then let's talk.**
+> **Read /Users/YOUR_USERNAME/constellation/OPERATING.md using the Filesystem tools
+> and follow it. Check the inbox, then let's talk.**
 
-If your app has **Projects**, put that line in the project's custom instructions so
-it happens automatically. (If it doesn't, the paste works every time.)
+Both details matter. The **full path** and the words **"using the Filesystem tools"**
+are what make Claude look on your Mac. Vaguer phrasing — "read OPERATING.md in my
+constellation folder" — often makes it search its own sandbox instead, and it will
+tell you, confidently, that the file doesn't exist.
 
-Without this, Claude has no idea the rules exist and will just chat with you — which
-is the second way to end up with an empty journal.
+**Do this once instead of pasting it every time:** make a **Project** called
+Constellation (free accounts have Projects), put that line in the project's custom
+instructions, and start every session as a new chat inside that project. Then the
+rules load on their own and there is nothing to remember.
+
+Without this, Claude doesn't know the rules exist and will just chat with you — the
+other way to end up with an empty journal.
 
 ---
 

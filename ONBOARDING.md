@@ -108,6 +108,8 @@ this file is the coaching layer over it. In order:
    → **Add directory** → choose *only* their `constellation` folder. Then set tool
    permissions per the table in `SETUP.md` — reads Allow, Write/Edit/Create Directory
    Allow, Move File ask, **Copy file to Claude Deny**. Then **Save**.
+   **Check Move File explicitly before they save.** Setting the group to Allow flips it
+   to Allow too, and both adopters so far have missed that.
 6. **Have them fully quit Claude Desktop (⌘Q) and reopen it.** Not close the window —
    quit. The connector does not start until the app restarts.
 7. **Turn off built-in memory** — and tell them why, because this step deserves an
@@ -147,6 +149,7 @@ These are real, all observed. Match the symptom, apply the fix.
 | Same symptom, and they already restarted | The prompt was too vague. "My constellation folder" often fails. | Have them say: *"Using the Filesystem tools, list the files in /Users/NAME/constellation."* The absolute path **and** naming the tools both matter. |
 | Reply says **"Created N memories"** and no file appears | Built-in memory hijacked the write. Nothing was saved to disk. | Step 6 — turn both memory toggles off. Then delete those memories in Settings → Memory. |
 | Claude offers to run `git commit`, or gives them terminal git commands | It has no shell. It cannot run git, ever. | Files are the record; no commits are needed. If they want a snapshot they run it by hand. |
+| Filesystem tools return an error, e.g. "hitting a server-side schema bug" | The MCP connector itself is failing, not their setup. Seen in the wild. | Claude Desktop will usually offer its own **built-in file access** with a separate permission prompt. Accepting it is fine — same folder, same result. Check the scope is their `constellation` folder and not the whole home directory. Reassure them: they didn't do anything wrong. |
 | Filesystem connector missing from the directory | Rare. | Fall back to `connector-config.example.json` — but that route needs **Node.js** installed, which the one-click connector may not. |
 | Everything works, then stops after a Claude Desktop update | Settings can reset on update. | Re-check the allowed directory, the permission table, and both memory toggles. |
 

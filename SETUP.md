@@ -80,6 +80,10 @@ Each tool can be set to allow (✓), ask every time (✋), or deny (⃠).
 | All read-only tools | **Allow** | Claude reads your inbox, journal, goals and north stars every session. Approval prompts here make the system exhausting to use. |
 | Write File, Edit File, Create Directory | **Allow** | This is the core loop — filing what you said, every session. Asking each time makes the system unusable. There's no automatic undo (see step 3), but Claude only ever *adds* to dated journal and reflection entries — it doesn't rewrite them. |
 | Move File | **Needs approval** | The one tool that can move a file out from under the system. It's rarely needed, so a prompt costs nothing. |
+
+> **Watch this one.** Setting the *group* dropdown to Allow flips **Move File** to Allow
+> as well. Set the group first, then put Move File back to "ask every time"
+> individually. It's easy to miss, and the screen looks correct either way.
 | **Copy file to Claude** | **Deny** | It copies files out of your folder into Claude's own storage — a permanent copy outside the boundary. See [docs/privacy.md](docs/privacy.md). |
 
 **Check it worked.** In a new chat, ask:
@@ -90,7 +94,15 @@ You should get a real listing (`OPERATING.md`, `events`, `candid`, …). If Clau
 it can't find the folder, or offers to let you *upload* it, then it's talking to its
 own sandbox rather than your Mac — **quit the app with ⌘Q, reopen it, and ask again.**
 
-> **Fallback:** if the connector directory doesn't offer Filesystem, you can configure
+> **If the Filesystem connector reports an error** — one adopter saw *"the Filesystem
+> MCP tools are hitting a server-side schema bug and can't be used right now"* — don't
+> panic and don't start over. Claude Desktop will usually offer its own **built-in file
+> access** instead, with a separate permission prompt for the same folder. Accepting
+> that is fine: same folder scope, same result. Just make sure it's pointed at your
+> `constellation` folder and nothing wider. If it offers you your whole home directory,
+> say no and narrow it.
+>
+> **Fallback 2:** if no Filesystem connector appears in the directory at all, configure
 > it by hand — see [connector-config.example.json](connector-config.example.json).
 > That route requires Node.js on the Mac; the one-click connector does not.
 
@@ -119,8 +131,15 @@ This is the only thing that lives in iCloud, so you can capture from your phone.
 2. On the Mac, either move `~/constellation/inbox.md` into iCloud and replace it with
    a link, or just tell Claude in step 8 where the iCloud inbox lives so it reads
    from there.
-3. On the iPhone, add that file/note to your Home Screen or Share sheet for one-tap
-   capture. **Only put facts-in-the-moment here — nothing you'd want to keep private.**
+3. On the iPhone, get to it quickly. iOS **can't** put a plain file on the Home Screen
+   directly, so either:
+   - **Shortcuts app** → new shortcut → *Open File* → pick `inbox.md` → **Add to Home
+     Screen**. One tap, but fiddly to set up.
+   - **Or skip it entirely** and just open the Files app when you want to jot something.
+     It'll be in Recents after the first time.
+
+   This step is a convenience, not a requirement — the system works fine without it.
+   **Only put facts-in-the-moment here — nothing you'd want to keep private.**
 
 ## 7. (Optional) Back up events to a private repo
 

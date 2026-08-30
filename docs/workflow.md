@@ -30,13 +30,13 @@ flowchart TD
     C -->|Mac session reads it| D
     I -.->|emptied back| C
 
-    subgraph GIT["🔒 git — version control, on the Mac"]
-        J[("events commit")]
-        K[("candid commit<br/>local only · no remote")]
+    subgraph GIT["🔒 git — optional manual snapshots, on the Mac"]
+        J[("events snapshot")]
+        K[("candid snapshot<br/>local only · no remote")]
     end
-    F --> J
-    H --> J
-    G --> K
+    F -.-> J
+    H -.-> J
+    G -.-> K
 
     J -->|optional push| L["🔐 Private repo<br/>(events only)"]
 
@@ -56,8 +56,10 @@ flowchart TD
 3. **Mac session:** you paste the boot prompt; Claude reads `inbox.md`, runs the
    advice loop, **routes** each item — facts → `events/`, candid → `candid/`, goals →
    `areas/*` — then **empties the inbox**.
-4. **git** versions everything locally. `events` can optionally push to a private
-   repo; `candid` (red) is committed locally and **never gets a remote or iCloud**.
+4. **git is optional** (dotted). Claude can't run it, so nothing commits on its own —
+   the files themselves are the record. If you want a snapshot you take it by hand.
+   `events` can optionally push to a private repo; `candid` (red) stays local and
+   **never gets a remote or iCloud**.
 5. **Anthropic (dotted)** sees content **only transiently, only when Claude reads a
    file** during a session — never a stored copy, and candid only if you bring it
    into that session.

@@ -39,6 +39,12 @@ cd ~/constellation/candid && git init && git add -A && git commit -m "start cand
 - **candid** must **never** get a remote. It stays on this machine. This is the
   privacy guarantee — read [docs/privacy.md](docs/privacy.md) before changing it.
 
+**You won't touch git again in normal use.** Claude can't run it — the file connector
+gives it files, not a shell — and the system doesn't need it. Your files *are* the
+record. This step just means that if you ever want a snapshot (before a big cleanup,
+say), you can run `git add -A && git commit -m "snapshot"` inside either folder and
+have one.
+
 ## 4. Install Claude Desktop and connect it to your folder
 
 1. Install the **Claude Desktop** app and sign in. **The free plan is fine** —
@@ -63,7 +69,7 @@ Each tool can be set to allow (✓), ask every time (✋), or deny (⃠).
 | Tools | Set to | Why |
 |---|---|---|
 | All read-only tools | **Allow** | Claude reads your inbox, journal, goals and north stars every session. Approval prompts here make the system exhausting to use. |
-| Write File, Edit File, Create Directory | **Allow** | This is the core loop — filing what you said. Mistakes are recoverable, because `events/` and `candid/` are git repos. |
+| Write File, Edit File, Create Directory | **Allow** | This is the core loop — filing what you said, every session. Asking each time makes the system unusable. There's no automatic undo (see step 3), but Claude only ever *adds* to dated journal and reflection entries — it doesn't rewrite them. |
 | Move File | **Needs approval** | The one tool that can move a file out from under the system. It's rarely needed, so a prompt costs nothing. |
 | **Copy file to Claude** | **Deny** | It copies files out of your folder into Claude's own storage — a permanent copy outside the boundary. See [docs/privacy.md](docs/privacy.md). |
 

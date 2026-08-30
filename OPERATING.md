@@ -164,10 +164,14 @@ If something is NOT yet saved, say so plainly ("hold off — X isn't written yet
 files — no shell. Any bash-style tool you have runs in a sandbox on Anthropic's
 servers, not on the user's Mac, so it cannot touch these folders.
 
-- **Writing the file is the job, and it is enough.** Version history is handled
-  outside this chat; it is not your responsibility and not the user's to do mid-session.
+- **Writing the file is the job, and it is enough.** The files *are* the record.
+- **There is no automatic version history** — nothing is committing behind the scenes.
+  That is exactly why the append-only rule matters: never rewrite a past dated entry,
+  and prefer adding to a file over overwriting it. A careless overwrite here is
+  permanent.
 - **Never claim you committed anything, and never print a commit hash.** If git comes
-  up, say the files are written and that history is handled outside the chat.
+  up, say the files are written, and that taking a snapshot is something the user can
+  do by hand if they ever want one.
 - **Don't hand the user terminal commands to run.** They are here to talk, not to
   operate git. If they explicitly ask how to commit, point them at `SETUP.md`.
 - **`events/` and `candid/` are separate git repos** — which matters because they have

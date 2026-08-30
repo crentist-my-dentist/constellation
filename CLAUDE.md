@@ -118,15 +118,19 @@ backward-compatible, or ship migration notes with them.
   own take to `candid/reflections/` — right tracks, dated, paraphrased not fabricated.
   The advice loop held its quality bar unprompted (options with costs, a real
   recommendation, no cheerleading).
-- **DECISION NEEDED — how do commits happen?** Found 2026-08-30: **Claude cannot run
-  git.** The Filesystem connector is read/write/edit only, no shell, and its bash tool
-  runs in Anthropic's sandbox, not on the Mac. `OPERATING.md`'s commit protocol was
-  therefore fiction; it now tells Claude it can't commit and must not offer terminal
-  commands. But that leaves nothing advancing history for an adopter. Options: (a) drop
-  git from the adopter experience entirely — files only; (b) a launchd agent that
-  auto-commits both repos on a timer (never pushes `candid/`) — the only option that
-  asks nothing of a non-technical user; (c) a double-clickable `commit.command`. (b) is
-  the recommendation. Until this is decided, adopters get files but no history.
+- ~~How do commits happen?~~ **Settled 2026-08-30: git is out of the adopter loop.**
+  Claude cannot run it — the Filesystem connector is read/write/edit only, no shell,
+  and its bash tool runs in Anthropic's sandbox rather than on the Mac — so the old
+  commit protocol was fiction. Michael ruled out a launchd auto-commit agent: he does
+  not want background processes running on relatives' machines that he'd be
+  accountable for. Files are the record; `git init` stays in setup only so a manual
+  snapshot is possible later. A double-clickable `commit.command` is the deferred
+  fallback if the lack of undo ever actually bites.
+- **Consequence to keep in mind: there is no undo.** The permission table auto-approves
+  Write File and Edit File, and its old justification ("recoverable from git") is now
+  false — both `SETUP.md` and `OPERATING.md` have been corrected. The append-only rule
+  for dated entries is the real mitigation now, so treat it as load-bearing rather than
+  stylistic.
 - **Still untested:** the iCloud inbox round-trip.
 - **Open question — Node.js.** The one-click connector appears to bundle its own
   runtime, but this was only tested on a machine that already had Node v26. Whether it

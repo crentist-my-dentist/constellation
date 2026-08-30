@@ -1,0 +1,16 @@
+{
+  "//": "Template for Claude Desktop's filesystem access. Copy the relevant part into",
+  "//2": "claude_desktop_config.json (Settings > Developer > Edit Config), replace",
+  "//3": "YOUR_USERNAME, then fully quit and reopen Claude Desktop. Prefer the app's",
+  "//4": "one-click Filesystem connector/extension if it offers one.",
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/YOUR_USERNAME/life-framework"
+      ]
+    }
+  }
+}

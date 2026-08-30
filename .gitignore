@@ -1,0 +1,8 @@
+# Your personal data lives in its own git repos (events/ and candid/), created from
+# templates/ during setup. The framework repo does not track them — they stay yours.
+/events/
+/candid/
+/inbox.md
+
+# macOS
+.DS_Store

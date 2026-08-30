@@ -1,0 +1,13 @@
+# Decisions (candid — local only)
+
+Real forks and the reasoning behind them — so future-you remembers not just *what*
+you chose but *why*, and what you traded away. Only genuine forks belong here, not
+routine choices.
+
+<!-- Format:
+## YYYY-MM-DD — the fork, in one line
+**Options I weighed:** ...
+**What I chose and why:** ...
+**What I gave up / the cost I accepted:** ...
+**How I'll know if it was right:** ...
+-->

@@ -94,11 +94,15 @@ Once they're in, the rest is the same either way:
 5. **When they say something raw, write it down — then say where it went.** This will
    happen, usually while you're drawing out the north star: *"I think I'm just lazy",
    "I start things and quit them constantly."* Two things, in this order:
-   **(a) Write it to `candid/reflections/YYYY-MM.md` right then**, in their voice. Do not
-   wait for the end of the session; it will not survive.
-   **(b) Then, once:** *"That kind of thing goes in your private notes — those stay on
-   this machine and never get backed up anywhere."* One sentence at the real moment
-   teaches the privacy model better than any explanation.
+   **(a) First, actually write it** to `candid/reflections/YYYY-MM.md`, in their voice,
+   creating the month file if it doesn't exist yet — on a first session it won't. Do this
+   before you reply, not at the end of the session; the line will not survive otherwise.
+   **(b) Only once that write has succeeded**, say — once — *"That kind of thing goes in
+   your private notes, which stay on this machine and never get backed up anywhere."*
+   One sentence at the real moment teaches the privacy model better than any explanation.
+   **Never say that sentence without having done (a).** It is very easy to produce the
+   words and skip the file, because the words are the part they can see. If you catch
+   yourself about to describe a write you haven't made, stop and make it.
    Push back on the self-criticism as well (see "The advice loop" — "lazy" is a label,
    not an explanation). But push back **and** file it. The good response is not the
    record, and it is exactly what makes you skip the record.
@@ -200,7 +204,7 @@ When processing the inbox:
 | A concrete goal, progress, the gap | `events/areas/<area>/goals.md` |
 | A real fork + the reasoning behind the choice | `candid/decisions.md` |
 | A person — their role, incentives, how they affect the user | `candid/people/_map.md` |
-| Honest feelings, private reflection, a hard read on a situation | `candid/reflections/YYYY-MM.md` (dated, append-only) |
+| Honest feelings, private reflection, a hard read on a situation | `candid/reflections/YYYY-MM.md` (dated, append-only; **create the month file if it doesn't exist yet** — on a new system it won't) |
 
 **Never edit past dated entries — add a new dated one.**
 
@@ -220,6 +224,12 @@ a magic word. **Assume they will not.** Noticing and filing is your job, not the
   wanted more context first, or judged it passing — name it and offer:
   *"I haven't written down how you're actually feeling about this yet — want that in
   your private notes?"*
+- **Never say you wrote something until the write has actually happened.** This is the
+  one rule you cannot bend. Do the write, see it succeed, *then* tell them. "I wrote that
+  down" when nothing reached the disk is worse than saying nothing at all — they stop
+  carrying the thought because they believe it's kept, and it isn't. If a write fails or
+  you realise you skipped it, say so plainly and do it now. Describing a file operation
+  you have not performed is the most damaging thing you can do in this system.
 - **Self-criticism is a trigger, not just a topic.** When someone says something
   unflattering about themselves — "I'm just lazy", "I quit everything I start", "I don't
   want to admit this" — write it to `candid/reflections/YYYY-MM.md` **the moment it's

@@ -1,12 +1,14 @@
-# life-framework
+# Constellation
 
 A private, goal-driven **life** system you run with Claude on your Mac. You talk;
 Claude maintains a small set of Markdown files that become your memory — wins,
 goals, honest reflections, the people around you, and the real forks you face.
 
-It grew out of a career-coaching setup, but this version supports **multiple north
-stars** at once: friendship, school, health, craft, career — whatever you're trying
-to get better at. Each area gets its own definition of "great" and its own goals.
+It grew out of a career-coaching setup, but this version lets you follow **more than
+one north star** at once: friendship, school, health, craft, career — whatever you're
+trying to get better at. Each area is a star with its own definition of "great" and
+its own goals; together they're your **constellation** — the pattern you navigate your
+life by.
 
 ## What makes it work
 

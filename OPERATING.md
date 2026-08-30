@@ -35,7 +35,7 @@ typed. If it isn't a direct quote, write it as plain paraphrase. Reported speech
 ## Life areas — multiple north stars
 
 This system supports several areas of life at once (e.g. friendship, school, health,
-craft, career). Each area has:
+craft, career) — together they form the user's "constellation." Each area has:
 
 - `north-star.md` — what "great" looks like here; the long-term vision and values.
 - `goals.md` — the current concrete goal, honest progress, and the gap.

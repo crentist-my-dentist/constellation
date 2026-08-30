@@ -144,13 +144,24 @@ are what make Claude look on your Mac. Vaguer phrasing — "read OPERATING.md in
 constellation folder" — often makes it search its own sandbox instead, and it will
 tell you, confidently, that the file doesn't exist.
 
-**Do this once instead of pasting it every time:** make a **Project** called
-Constellation (free accounts have Projects), put that line in the project's custom
-instructions, and start every session as a new chat inside that project. Then the
-rules load on their own and there is nothing to remember.
+**Set it up once instead of pasting it every time.** Free accounts have Projects:
 
-Without this, Claude doesn't know the rules exist and will just chat with you — the
-other way to end up with an empty journal.
+1. Click **Projects** in the left sidebar.
+2. Click **New project**. Name it **Constellation**.
+3. Open the project's **instructions** (sometimes called custom instructions or
+   project instructions) and paste the boot prompt above, with your path filled in.
+4. Make sure the **Filesystem connector is switched on for the project**, so every
+   chat inside it can reach your files.
+5. From now on, start each session with **a new chat inside that project**.
+
+**Check it worked:** start a new chat in the project and just say **hi**. Claude should
+come back having read the rules and checked your inbox — not with a generic "what's on
+your mind?". If you get the generic answer, the instructions didn't load: paste the
+boot prompt manually for now, and it'll work exactly the same.
+
+Without either the project or the pasted prompt, Claude doesn't know the rules exist
+and will just chat with you — the other way to end up with an empty journal. It won't
+warn you; it'll simply be ordinary Claude.
 
 ---
 

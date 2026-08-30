@@ -80,8 +80,15 @@ this file is the coaching layer over it. In order:
 7. **Turn off built-in memory**: Settings → Memory → switch off *Generate memory from
    chats* **and** *Include sensitive topics in memory*.
 8. **Set up the iCloud inbox** for phone capture.
-9. **Create a Project** called Constellation with the boot prompt as its custom
-   instructions, so the rules load automatically every session.
+9. **Create a Project so they never have to paste anything again.** This is the step
+   that decides whether they keep using the system, so don't rush it:
+   **Projects** in the left sidebar → **New project** → name it **Constellation** →
+   open its **instructions** and paste the boot prompt (with their real path) →
+   make sure the **Filesystem connector is enabled for the project**.
+   Then have them start a new chat inside it and just say **hi**. If Claude answers
+   generically — "what's on your mind?" — the instructions didn't load; have them paste
+   the boot prompt manually and tell them that works identically. Explain that from now
+   on, "open the Constellation project and talk" is the whole ritual.
 
 ## Known failure modes — check these before theorising
 

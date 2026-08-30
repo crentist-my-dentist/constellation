@@ -132,18 +132,45 @@ backward-compatible, or ship migration notes with them.
   false — both `SETUP.md` and `OPERATING.md` have been corrected. The append-only rule
   for dated entries is the real mitigation now, so treat it as load-bearing rather than
   stylistic.
-- **Still untested:** the iCloud inbox round-trip.
-- **`ONBOARDING.md` distribution is unsettled.** It's written to be *attached* to a
-  fresh chat (works today, keeps the repo private). A public raw-GitHub URL would be
-  one step simpler for the adopter but requires publishing at least that one file —
-  Claude can't fetch from a private repo, and during onboarding there is no connector
-  yet, so it can't read it locally either. Decide when publishing is decided.
+- ~~First-session flow~~ verified 2026-08-30 against a pristine instance with a
+  scripted adopter, and again after fixes. Cold-start detection, one-area discipline,
+  the stall fallback, first-person voice, candid capture, and an unprompted honest
+  checkpoint all hold. It took four runs; see the failure pattern below.
+- **Still untested:** the iCloud inbox round-trip (needs the phone side set up).
+- ~~`ONBOARDING.md` distribution~~ — settled with the publish decision. The raw GitHub
+  URL works: adopters paste one line into a fresh chat and Claude fetches it. The whole
+  handoff is now "install Claude Desktop, paste this prompt", with the paste text living
+  in `README.md` so only the repo link needs sending.
 - **Adopter feedback path is `feedback.md`** (gitignored, created from `templates/`).
   Claude appends dated mechanical entries when the *system* misbehaves; the adopter
   pastes them to Michael by hand. Deliberately manual: no network path out of a
   relative's machine, and they see everything before it's sent. `OPERATING.md` forbids
   any personal content in it — this file is the one thing that routinely travels from
   an adopter to a third party, so treat that rule as load-bearing.
+- **The characteristic failure of this system is a confident false positive**, not an
+  error. Every serious bug found on 2026-08-30 looked like success: the sandbox offering
+  to let you "upload" your own folder; "Created 2 memories" while nothing hit disk; a
+  checkpoint listing tidy structural files while the honest material stayed in the chat;
+  and a beautifully rendered document titled "Reflections — 2026-08" standing in for a
+  file that was never written. **Defences that work check the disk; defences that trust
+  the report do not.** Hence the read-back rule for candid writes, and the "say hi and
+  see if it checks your inbox" verification in setup. Any new rule should be judged by
+  whether it would catch a plausible-looking non-event.
+- **A concrete script beats a conditional rule.** Twice, a rule failed because the doc
+  spelled out exactly what to say for one case and left the other as an abstract
+  condition — the script won every time. When a behaviour matters, write the words. The
+  corollary bit too: scripting the *sentence* while leaving the *write* abstract made
+  Claude produce the sentence and skip the file. Script the action, gate the speech on it.
+- **Never add a second allowed directory to the connector.** With `constellation-live`
+  and `constellation-test` both attached, Claude answered questions about "your files"
+  by blending the two — reporting no journal (true of one) and no areas (true of the
+  other) in the same breath, and taking the wrong branch as a result. `SETUP.md` already
+  says pick only that folder for privacy; it matters for correctness too. Swap
+  directories when testing, never stack them.
+- **Project setup has a trap worth re-checking after Desktop updates.** The New Project
+  dialog's "What are you trying to achieve?" is a description, not instructions; the
+  boot prompt must go in the **Instructions** panel on the project page. Wrong box fails
+  silently — the project simply behaves like ordinary Claude.
 - **Keep `ONBOARDING.md`'s failure table current.** It's the only place the silent
   failure signatures are written down, and each one cost real debugging time to find.
   A new Desktop release that changes a symptom makes that table wrong, not just stale.
@@ -151,11 +178,16 @@ backward-compatible, or ship migration notes with them.
   runtime, but this was only tested on a machine that already had Node v26. Whether it
   works on a Node-less Mac is unverified, and that's every relative's Mac. Confirm on a
   clean machine before onboarding anyone.
-- ~~Publish decision~~ — settled 2026-08-30: private repo on Michael's personal
-  GitHub account, adopters added as Read collaborators. GitHub Free covers this for
-  everyone (unlimited private repos + collaborators); a free org with teams is the
-  fallback if the group outgrows a collaborator list. Branch protection on private
-  repos would need the paid Team plan — not needed here.
+- ~~Publish decision~~ — settled 2026-08-30: **public repo** at
+  `github.com/crentist-my-dentist/constellation`. Started private with Read
+  collaborators, then went public because private forced every adopter through a GitHub
+  account, an invite, a git install and auth before Claude had anything to read. Nothing
+  private is in here — `events/` and `candid/` are gitignored and never were. Adopters
+  now need no GitHub account at all: ZIP download or `git clone`, both unauthenticated.
+  **Before publishing, history was rewritten** to replace two personal email addresses
+  with the GitHub `noreply` address, and the repo was deleted and recreated rather than
+  force-pushed — a force-push leaves the old commits reachable by SHA on a public repo,
+  which was verified and then removed. Keep commits on the `noreply` identity.
 - Optional add-on: read-only "advice-on-the-go" phone path (events surfaced via a
   Project/connector).
 - Design rationale that predates this repo lives in the Career project's memory

@@ -136,7 +136,26 @@ backward-compatible, or ship migration notes with them.
   scripted adopter, and again after fixes. Cold-start detection, one-area discipline,
   the stall fallback, first-person voice, candid capture, and an unprompted honest
   checkpoint all hold. It took four runs; see the failure pattern below.
-- **Still untested:** the iCloud inbox round-trip (needs the phone side set up).
+- **Still untested:** the iCloud inbox round-trip. The first adopter skipped it — the
+  guide said to add the file to the iPhone Home Screen, which iOS doesn't support for
+  plain files. Now documents the Shortcuts route and marks the step optional, but
+  nobody has actually run a phone capture through to a Mac session.
+- **OPEN — does the built-in file-access fallback preserve the permission model?**
+  First outside adopter (2026-08-30) hit "the Filesystem MCP tools are hitting a
+  server-side schema bug" and completed setup through Claude Desktop's *own* file
+  access instead, with a separate permission prompt. It works, and it's documented as
+  an expected path. But `docs/privacy.md` names three enforcement mechanisms —
+  directory scope, **"Copy file to Claude" denied**, and memory off — and it is unknown
+  whether that alternate path exposes per-tool permissions at all. If it doesn't, the
+  Copy-to-Claude control silently doesn't exist for those users and privacy.md is
+  overclaiming for them. **Check this before more people onboard**; it is the only
+  outstanding claim in the docs that may not be true.
+- **Also unresolved by that run: the Node question.** Because the MCP connector failed
+  before it could start, the adopter's Node-less Mac still didn't answer whether the
+  one-click connector bundles a runtime.
+- **First outside adopter's report is the model for feedback**: two silent-ish gotchas
+  and one impossible instruction, none of which either maintainer would have found.
+  Ask adopters where they hesitated, not whether it worked.
 - ~~`ONBOARDING.md` distribution~~ — settled with the publish decision. The raw GitHub
   URL works: adopters paste one line into a fresh chat and Claude fetches it. The whole
   handoff is now "install Claude Desktop, paste this prompt", with the paste text living

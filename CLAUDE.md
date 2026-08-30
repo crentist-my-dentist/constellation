@@ -70,13 +70,42 @@ examples/friendship/ a filled-in area
 ## Commit hygiene
 
 Author is Michael. Commit after meaningful changes with a short descriptive message.
-End messages with the Co-Authored-By trailer. Local-only for now — no remote until
-Michael decides where to publish (open thread).
+End messages with the Co-Authored-By trailer. The remote is
+`github.com/crentist-my-dentist/constellation` — **private**. Adopters get **Read**
+access so a stray push from their clone can't reach the framework.
+
+## Maintainer's own setup (dev vs. live)
+
+Michael is both maintainer and adopter, so there are two clones:
+
+- **`~/constellation`** — the dev clone. Write access to the remote. Framework edits
+  and Claude Code sessions happen here. It has no `events/`/`candid/` of its own.
+- **`~/constellation-live`** — his personal instance, cloned from the remote exactly
+  as an adopter's is, with real `events/` and `candid/`. The Desktop connector points
+  *here*, not at the dev clone.
+
+Kept separate for two reasons: personal `candid/` content shouldn't sit in the working
+directory of dev sessions, and living in a normal adopter clone means Michael feels a
+broken `git pull` or a bad `OPERATING.md` change before a relative does.
+
+**File-layout changes are migrations.** A pull updates an adopter's *rules* but not
+their *data* — rename `events/wins.md` or restructure `events/areas/<name>/` and
+`OPERATING.md` starts pointing at paths their files don't have. Keep layout changes
+backward-compatible, or ship migration notes with them.
 
 ## Notes / open threads
 
-- Live setup test on a real Mac (does the filesystem connector work end-to-end?).
-- Publish decision: where the template repo is hosted.
+- Live setup test on a real Mac — **git half done**: a full rehearsal (clone → copy
+  templates → `git init` both data repos → write data → pull an upstream update)
+  confirmed nothing leaks into the framework repo and updates land without touching
+  adopter data. **Still untested: the filesystem connector, the iCloud inbox
+  round-trip, and whether `OPERATING.md`'s routing table actually splits events from
+  candid in a real session.**
+- ~~Publish decision~~ — settled 2026-08-30: private repo on Michael's personal
+  GitHub account, adopters added as Read collaborators. GitHub Free covers this for
+  everyone (unlimited private repos + collaborators); a free org with teams is the
+  fallback if the group outgrows a collaborator list. Branch protection on private
+  repos would need the paid Team plan — not needed here.
 - Optional add-on: read-only "advice-on-the-go" phone path (events surfaced via a
   Project/connector).
 - Design rationale that predates this repo lives in the Career project's memory

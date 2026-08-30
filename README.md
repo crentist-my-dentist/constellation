@@ -25,6 +25,10 @@ life by.
 
 1. Read **[SETUP.md](SETUP.md)** — one-time setup (Claude Desktop, file access,
    the iCloud inbox, git). ~20 minutes with a helper.
+   *Rather be walked through it?* Open a new Claude chat, attach
+   **[ONBOARDING.md](ONBOARDING.md)**, and say "help me set this up." Claude will take
+   you a step at a time and can read screenshots of your screen when something looks
+   wrong.
 2. Skim **[docs/workflow.md](docs/workflow.md)** — the picture of how a day flows.
 3. Read **[docs/privacy.md](docs/privacy.md)** — an honest account of what stays
    private and what doesn't. Please actually read this one.

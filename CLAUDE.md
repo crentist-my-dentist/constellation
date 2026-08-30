@@ -72,6 +72,7 @@ CLAUDE.md            this file — dev orientation
 connector-config.example.json
 docs/workflow.md     the mermaid flow diagram
 docs/privacy.md      the honest privacy account
+ONBOARDING.md        agent-facing setup coach (attached to a fresh chat by the adopter)
 templates/           what a user copies to start (events/, candid/, inbox.md)
 examples/friendship/ a filled-in area
 ```
@@ -132,6 +133,14 @@ backward-compatible, or ship migration notes with them.
   for dated entries is the real mitigation now, so treat it as load-bearing rather than
   stylistic.
 - **Still untested:** the iCloud inbox round-trip.
+- **`ONBOARDING.md` distribution is unsettled.** It's written to be *attached* to a
+  fresh chat (works today, keeps the repo private). A public raw-GitHub URL would be
+  one step simpler for the adopter but requires publishing at least that one file —
+  Claude can't fetch from a private repo, and during onboarding there is no connector
+  yet, so it can't read it locally either. Decide when publishing is decided.
+- **Keep `ONBOARDING.md`'s failure table current.** It's the only place the silent
+  failure signatures are written down, and each one cost real debugging time to find.
+  A new Desktop release that changes a symptom makes that table wrong, not just stale.
 - **Open question — Node.js.** The one-click connector appears to bundle its own
   runtime, but this was only tested on a machine that already had Node v26. Whether it
   works on a Node-less Mac is unverified, and that's every relative's Mac. Confirm on a

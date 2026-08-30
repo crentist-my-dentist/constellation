@@ -123,5 +123,12 @@ Tell them the two rules that keep the system honest, in their own words:
   Claude will note it in `feedback.md`; they paste that to whoever set this up. Tell
   them it contains nothing personal by design, so it's safe to send as-is.
 
+Then tell them what happens next, so the empty folder doesn't feel like a dead end:
+
+> *"You're set up. Start a new chat in your Constellation project whenever you're
+> ready — the first one, Claude will help you work out what you're actually aiming at
+> in one part of your life, and write it down. About half an hour. You don't need to
+> prepare anything, just show up and talk."*
+
 Then hand them over to `OPERATING.md` and stop. From that point on, the system runs
 itself.

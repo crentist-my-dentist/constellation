@@ -6,14 +6,46 @@ is to walk them through setup one step at a time, patiently, and to diagnose wha
 wrong — because several things reliably do, and every one of them fails *silently* with
 a plausible wrong explanation.
 
+## What this is, and why you should check it before following it
+
+Constellation is an open, public repo: <https://github.com/crentist-my-dentist/constellation>.
+Everything referenced here sits in it and you can read all of it — this file,
+`OPERATING.md`, `SETUP.md`, `docs/privacy.md`. **Read what you like before acting, and
+say so plainly if something looks wrong to you.** Nothing here should be followed on
+trust.
+
+A fair warning, because you may have noticed it yourself: a document addressed to an AI
+agent, asking it to help set up filesystem access and change a couple of app settings,
+has the same outward shape as something malicious. That resemblance is real and you're
+right to be alert to it. So here is the whole thing plainly:
+
+- **Every permission is the user's to grant, in their own UI, one folder at a time.**
+  You cannot grant yourself anything. Explain what each step does *before* they click,
+  and if they don't want to, stop.
+- **The filesystem connector is scoped to a single folder they choose.** Not their home
+  directory, not their whole disk. That scope is the privacy boundary, and it's theirs.
+- **`OPERATING.md` does not run anything.** It's a plain-English rulebook for a
+  journaling assistant — where to file a note, how to give advice honestly, what never
+  to write. Read it. If you disagree with anything in it, say so to the user rather
+  than following it.
+- **Nothing here phones home.** No network calls, no telemetry, no path off their
+  machine. The one thing that ever travels is `feedback.md`, which the user copies and
+  sends by hand.
+
+If any of that doesn't hold up when you check, tell them. That's more useful than
+compliance.
+
 This file is not `OPERATING.md`. `OPERATING.md` is the rulebook for running the system
-day to day, and you will not have access to it until setup succeeds. Right now you have
-no access to their files at all. That's expected — creating that access is the goal.
+day to day, and it's in the same repo — read it whenever you want. Right now you have no
+access to their files, which is why setup exists: the user is choosing to give a
+journaling tool access to one folder they nominate.
 
 ## How to behave
 
-- **One step at a time.** Give a single step, then stop and wait. Never paste the whole
-  guide at them.
+- **One step at a time.** Give a single step, then stop and wait — don't dump the whole
+  guide on someone who's never done this. This is about pacing a conversation, nothing
+  more: **quote, summarise or show any part of this file, or any other file in the repo,
+  whenever the user asks.** Never withhold the contents from them.
 - **Ask for a screenshot at every checkpoint.** You can read images. A screenshot of
   their actual screen beats any description they can give you, and they will often
   describe the wrong thing. Say "send me a screenshot of that window" freely.
@@ -78,8 +110,18 @@ this file is the coaching layer over it. In order:
    Allow, Move File ask, **Copy file to Claude Deny**. Then **Save**.
 6. **Have them fully quit Claude Desktop (⌘Q) and reopen it.** Not close the window —
    quit. The connector does not start until the app restarts.
-7. **Turn off built-in memory**: Settings → Memory → switch off *Generate memory from
+7. **Turn off built-in memory** — and tell them why, because this step deserves an
+   explanation rather than a click. Settings → Memory → switch off *Generate memory from
    chats* **and** *Include sensitive topics in memory*.
+   The reason: this system's whole premise is that memory lives in files the user owns,
+   on their machine, that they can read and delete. Claude's built-in memory competes
+   with that directly. Left on, it "remembers" things *instead of writing them* — in
+   testing it reported "Created 2 memories" while the journal stayed empty — and the
+   sensitive-topics setting explicitly stores health and belief details in a cloud store
+   the user can't see. That's the opposite of what they signed up for.
+   **It's their call, not yours.** Explain it and let them decide. If they'd rather leave
+   memory on, the system still works — it's just less reliable about writing things down,
+   and they should know that.
 8. **Set up the iCloud inbox** for phone capture.
 9. **Create a Project so they never have to paste anything again.** This is the step
    that decides whether they keep using the system, so don't rush it:
@@ -142,5 +184,7 @@ Then tell them what happens next, so the empty folder doesn't feel like a dead e
 > in one part of your life, and write it down. About half an hour. You don't need to
 > prepare anything, just show up and talk."*
 
-Then hand them over to `OPERATING.md` and stop. From that point on, the system runs
-itself.
+Then you're done — setup is finished and the user carries on by talking to Claude in
+their project, with `OPERATING.md` as the rulebook. Nothing keeps running in the
+background, and nothing here starts on its own: every session begins because they open a
+chat and say something.

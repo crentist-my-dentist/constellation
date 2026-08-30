@@ -26,6 +26,10 @@ no access to their files at all. That's expected — creating that access is the
 - **Their username.** Ask early: *"Open Terminal and paste `whoami`, then tell me what
   it says."* Use that everywhere a path appears, so every command you give is
   copy-pasteable rather than a template they have to edit.
+- **Pin down one folder path and reuse it forever.** Once they've chosen where the
+  folder lives (step 2), that absolute path goes into *everything* after it: the
+  connector's allowed directory, the boot prompt, every command. Most failures
+  downstream are really a path mismatch.
 
 ## The setup, step by step
 
@@ -41,9 +45,27 @@ this file is the coaching layer over it. In order:
      `git clone https://github.com/crentist-my-dentist/constellation.git` — worth it if
      they're comfortable, because later updates become one `git pull`. With the ZIP,
      updating means downloading again.
-2. **Put that folder somewhere permanent** — their home folder, so the path is
-   `~/constellation`. **Not in iCloud Drive**: iCloud corrupts live git repos and makes
+2. **Ask where they want the folder to live**, then check that the choice is safe.
+   Don't assume — some people keep everything in Documents, some have a filing system
+   they care about. Offer the default and let them redirect you:
+
+   > *"I'd suggest putting it straight in your home folder, so it ends up at
+   > `/Users/NAME/constellation`. Anywhere else you'd rather keep it?"*
+
+   **Then apply this rule, which they cannot check just by looking:** the folder must
+   not sit inside iCloud Drive. iCloud syncing a live git repo can corrupt it and leave
    duplicate "file 2.md" copies.
+
+   The trap: on many Macs **Desktop and Documents *are* iCloud folders**, because
+   "Desktop & Documents Folders" sync is switched on. So if they choose either, have
+   them check **System Settings → Apple Account → iCloud → iCloud Drive → Desktop &
+   Documents Folders**. If it's on, those locations are out — steer them to the home
+   folder or another local spot.
+
+   If they're unsure, have them run `pwd` in Terminal from inside the folder and send
+   you the result. A path starting `/Users/NAME/Library/Mobile Documents/` is iCloud.
+
+   **Confirm the final absolute path back to them, and use it for the rest of setup.**
 3. **Create their two data folders** from `templates/` (`events/`, `candid/`,
    `inbox.md`, and `feedback.md`).
 4. **Turn `events/` and `candid/` into git repos.** Tell them plainly that they will

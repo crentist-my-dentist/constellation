@@ -26,6 +26,7 @@ cd ~/constellation
 cp -R templates/events  events
 cp -R templates/candid  candid
 cp    templates/inbox.md inbox.md   # (temporary; real inbox goes in iCloud, step 6)
+cp    templates/feedback.md feedback.md
 ```
 
 ## 3. Turn events/ and candid/ into their own git repos

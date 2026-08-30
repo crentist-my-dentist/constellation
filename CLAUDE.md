@@ -138,6 +138,12 @@ backward-compatible, or ship migration notes with them.
   one step simpler for the adopter but requires publishing at least that one file —
   Claude can't fetch from a private repo, and during onboarding there is no connector
   yet, so it can't read it locally either. Decide when publishing is decided.
+- **Adopter feedback path is `feedback.md`** (gitignored, created from `templates/`).
+  Claude appends dated mechanical entries when the *system* misbehaves; the adopter
+  pastes them to Michael by hand. Deliberately manual: no network path out of a
+  relative's machine, and they see everything before it's sent. `OPERATING.md` forbids
+  any personal content in it — this file is the one thing that routinely travels from
+  an adopter to a third party, so treat that rule as load-bearing.
 - **Keep `ONBOARDING.md`'s failure table current.** It's the only place the silent
   failure signatures are written down, and each one cost real debugging time to find.
   A new Desktop release that changes a symptom makes that table wrong, not just stale.

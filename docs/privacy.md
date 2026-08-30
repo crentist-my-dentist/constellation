@@ -33,6 +33,10 @@ narrower and still worth having.
 - **`candid/` (feelings, people reads, hard forks):** committed to git **locally
   only**. No remote, ever. Never written to `inbox.md` or iCloud.
 - **`inbox.md`:** lives in iCloud for phone capture, so **facts only** go there.
+- **`feedback.md`:** notes about the *system* being broken, meant to be sent to
+  whoever set this up. Claude is instructed to keep it free of anything personal — no
+  journal or reflection text, no names, no details about your life. You send it by
+  hand, so you always see it first. Read an entry before you paste it.
 
 ## How the boundary is actually enforced
 

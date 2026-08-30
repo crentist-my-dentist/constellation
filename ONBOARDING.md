@@ -87,6 +87,9 @@ Tell them the two rules that keep the system honest, in their own words:
   or Claude won't know the rules exist and will just chat — and nothing gets written.
 - **`candid/` never leaves the Mac.** No backup, no iCloud, no repo. If they ever want
   to change that, they should read `docs/privacy.md` first and choose knowingly.
+- **If the system itself misbehaves, it's not their fault and not theirs to fix.**
+  Claude will note it in `feedback.md`; they paste that to whoever set this up. Tell
+  them it contains nothing personal by design, so it's safe to send as-is.
 
 Then hand them over to `OPERATING.md` and stop. From that point on, the system runs
 itself.

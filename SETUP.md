@@ -147,12 +147,16 @@ tell you, confidently, that the file doesn't exist.
 **Set it up once instead of pasting it every time.** Free accounts have Projects:
 
 1. Click **Projects** in the left sidebar.
-2. Click **New project**. Name it **Constellation**.
-3. Open the project's **instructions** (sometimes called custom instructions or
-   project instructions) and paste the boot prompt above, with your path filled in.
-4. Make sure the **Filesystem connector is switched on for the project**, so every
+2. Click **New project**. Under *"What are you working on?"* type **Constellation**.
+3. **Leave "What are you trying to achieve?" as a plain description** — something like
+   *"my life system"*. That box is only a label for the project. **It is not the
+   instructions**, and the boot prompt will do nothing there.
+4. Create the project, then find the **Instructions** panel on the right of the project
+   page ("Add instructions to tailor Claude's responses"). Click **+** and paste the
+   boot prompt above, with your path filled in. **This is the field that matters.**
+5. Make sure the **Filesystem connector is switched on for the project**, so every
    chat inside it can reach your files.
-5. From now on, start each session with **a new chat inside that project**.
+6. From now on, start each session with **a new chat inside that project**.
 
 **Check it worked:** start a new chat in the project and just say **hi**. Claude should
 come back having read the rules and checked your inbox — not with a generic "what's on

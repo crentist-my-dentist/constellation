@@ -82,9 +82,13 @@ this file is the coaching layer over it. In order:
 8. **Set up the iCloud inbox** for phone capture.
 9. **Create a Project so they never have to paste anything again.** This is the step
    that decides whether they keep using the system, so don't rush it:
-   **Projects** in the left sidebar → **New project** → name it **Constellation** →
-   open its **instructions** and paste the boot prompt (with their real path) →
-   make sure the **Filesystem connector is enabled for the project**.
+   **Projects** in the left sidebar → **New project** → name it **Constellation**.
+   **Watch them here:** the creation dialog asks *"What are you trying to achieve?"*,
+   which looks like the instructions field but is only a description — the boot prompt
+   does nothing there. Have them put something plain like "my life system" in it, create
+   the project, then use the **Instructions** panel on the right of the project page
+   (**+** → paste the boot prompt with their real path). Then make sure the
+   **Filesystem connector is enabled for the project**.
    Then have them start a new chat inside it and just say **hi**. If Claude answers
    generically — "what's on your mind?" — the instructions didn't load; have them paste
    the boot prompt manually and tell them that works identically. Explain that from now

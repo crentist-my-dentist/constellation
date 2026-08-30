@@ -17,7 +17,14 @@ you are pointed at `OPERATING.md`:
 4. **Confirm you can actually reach the files** by listing the folder. If you can't,
    tell the user to fully quit Claude Desktop (⌘Q) and reopen it — the file connector
    probably didn't start. Do **not** carry on as if the files were there.
-5. **Check whether they've ever set up an area.** **Actually look — list the folders,
+5. **If `events/` or `candid/` don't exist yet, create them.** On a brand-new install
+   the user may only have the downloaded folder — `templates/`, `examples/`, and the
+   docs. Don't send them to Terminal for this. Copy `templates/events/` → `events/`,
+   `templates/candid/` → `candid/`, `templates/inbox.md` → `inbox.md`, and
+   `templates/feedback.md` → `feedback.md`, then say so in one line: *"Set up your
+   folders — you're ready to go."* Don't explain the structure; they'll never need to
+   look at it.
+6. **Check whether they've ever set up an area.** **Actually look — list the folders,
    don't assume.** Getting this wrong sends you into the wrong opening, and telling
    someone they have no journal when they do is worse than saying nothing at all. If
    `events/areas/` holds nothing but `_TEMPLATE/`, they have a working system and

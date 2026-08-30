@@ -66,10 +66,11 @@ this file is the coaching layer over it. In order:
    you the result. A path starting `/Users/NAME/Library/Mobile Documents/` is iCloud.
 
    **Confirm the final absolute path back to them, and use it for the rest of setup.**
-3. **Create their two data folders** from `templates/` (`events/`, `candid/`,
-   `inbox.md`, and `feedback.md`).
-4. **Turn `events/` and `candid/` into git repos.** Tell them plainly that they will
-   not touch git again — it's there only so a snapshot is possible later.
+3. **Skip the data folders** — don't send them to Terminal for this. `OPERATING.md`
+   tells Claude to create `events/`, `candid/`, `inbox.md` and `feedback.md` from
+   `templates/` on the first run, so it happens by itself in step 9.
+4. **Skip git too**, unless they ask. It's optional now: Claude can't run it, and the
+   files themselves are the record. Mention it only if they want snapshots.
 5. **Install Claude Desktop, sign in** (free plan is fine), **and add the Filesystem
    connector**: `+` → **Add connector** → **Browse connectors** → search **Filesystem**
    → **Add directory** → choose *only* their `constellation` folder. Then set tool

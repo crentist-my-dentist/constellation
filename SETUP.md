@@ -21,10 +21,13 @@ Keep this folder in a plain local location like `~/constellation`. **Do not put 
 in iCloud Drive** — iCloud syncing a live git repo can corrupt it and make duplicate
 "file 2.md" copies. (The one iCloud file we *do* use is the inbox, in step 6.)
 
-## 2. Create your two data folders from the templates
+## 2. Your data folders — Claude makes these for you
 
-The framework ships templates; your actual data lives in `events/` and `candid/`,
-which are ignored by the framework's own git so they stay yours.
+Your actual writing lives in `events/` and `candid/`, created from the templates that
+ship with the framework. **You don't need to do anything here** — the first time you
+talk to Claude (step 8) it will notice they're missing and create them.
+
+If you'd rather do it by hand:
 
 ```sh
 cd ~/constellation
@@ -34,7 +37,7 @@ cp    templates/inbox.md inbox.md   # (temporary; real inbox goes in iCloud, ste
 cp    templates/feedback.md feedback.md
 ```
 
-## 3. Turn events/ and candid/ into their own git repos
+## 3. (Optional) Turn events/ and candid/ into git repos
 
 ```sh
 cd ~/constellation/events && git init && git add -A && git commit -m "start events"
@@ -45,11 +48,11 @@ cd ~/constellation/candid && git init && git add -A && git commit -m "start cand
 - **candid** must **never** get a remote. It stays on this machine. This is the
   privacy guarantee — read [docs/privacy.md](docs/privacy.md) before changing it.
 
-**You won't touch git again in normal use.** Claude can't run it — the file connector
-gives it files, not a shell — and the system doesn't need it. Your files *are* the
-record. This step just means that if you ever want a snapshot (before a big cleanup,
-say), you can run `git add -A && git commit -m "snapshot"` inside either folder and
-have one.
+**This step is optional and you can skip it.** Claude can't run git — the file
+connector gives it files, not a shell — and the system doesn't need it. Your files
+*are* the record. Doing this only means that if you ever want a snapshot (before a big
+cleanup, say), you can run `git add -A && git commit -m "snapshot"` inside either
+folder. If you skip it now you can always do it later.
 
 ## 4. Install Claude Desktop and connect it to your folder
 

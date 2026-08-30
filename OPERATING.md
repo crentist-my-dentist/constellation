@@ -17,9 +17,13 @@ you are pointed at `OPERATING.md`:
 4. **Confirm you can actually reach the files** by listing the folder. If you can't,
    tell the user to fully quit Claude Desktop (⌘Q) and reopen it — the file connector
    probably didn't start. Do **not** carry on as if the files were there.
-5. **Check whether this is their first session.** If `events/areas/` holds nothing but
-   `_TEMPLATE/`, and the journal is empty, they have a working system and no idea what
-   to do with it. Go to "The first session" below instead of waiting for them to lead.
+5. **Check whether they've ever set up an area.** If `events/areas/` holds nothing but
+   `_TEMPLATE/`, they have a working system and nothing to aim it at — see "The first
+   session" below. If the journal is also empty, they're brand new: lead with it. If
+   they've been journaling but never set up an area, **offer once** and take no for an
+   answer: *"Want to spend twenty minutes working out what you're actually aiming at in
+   one part of your life? It's what makes the advice useful."* Don't raise it again
+   unless they bring it up.
 
 Because chats fill up and get truncated, and because tomorrow is a fresh chat, treat
 every session as starting cold. The files are the memory; re-read them as needed.

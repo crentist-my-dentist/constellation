@@ -21,10 +21,24 @@ life by.
 - **Advice, not cheerleading.** Claude gives you real options with real costs, tells
   you when you're wrong, and protects your integrity — it won't help you be sleazy.
 
-## Start here
+## Set it up (the easy way)
+
+1. Install the free **[Claude Desktop](https://claude.ai/download)** app and sign in.
+2. Start a new chat and paste this:
+
+> Read https://raw.githubusercontent.com/crentist-my-dentist/constellation/main/ONBOARDING.md and follow it — help me set this up.
+
+That's it. Claude will walk you through the rest one step at a time, ask where you want
+things, and can look at screenshots of your screen when something doesn't look right.
+Budget ~20 minutes.
+
+## Or set it up yourself
 
 Get the files: **Code → Download ZIP** at the top of this page, unzip, and rename the
-folder to `constellation`. (Or `git clone` it, if that means something to you.)
+folder to `constellation`. (Or `git clone` it, if that means something to you.) Then
+follow [SETUP.md](SETUP.md).
+
+## Start here
 
 1. Read **[SETUP.md](SETUP.md)** — one-time setup (Claude Desktop, file access,
    the iCloud inbox, git). ~20 minutes with a helper.
